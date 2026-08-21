@@ -17,3 +17,28 @@ document.querySelectorAll('.profile-tabs button').forEach(b=>b.addEventListener(
 document.querySelectorAll('[data-member-filter]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-member-filter]').forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');filterMembers()}));document.querySelector('.member-search input')?.addEventListener('input',filterMembers);function filterMembers(){const kind=document.querySelector('[data-member-filter].is-active')?.dataset.memberFilter||'all';const q=document.querySelector('.member-search input')?.value.toLowerCase()||'';let shown=0;document.querySelectorAll('.member-card').forEach(c=>{const ok=(kind==='all'||c.dataset.memberKinds.includes(kind))&&c.textContent.toLowerCase().includes(q);c.hidden=!ok;if(ok)shown++});document.querySelector('.member-empty').hidden=shown>0}
 document.querySelectorAll('[data-knowledge-filter]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-knowledge-filter]').forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');const kind=b.dataset.knowledgeFilter;document.querySelectorAll('[data-knowledge-kind]').forEach(c=>c.hidden=kind!=='all'&&c.dataset.knowledgeKind!==kind)}));
 const compose=document.querySelector('.compose-form');compose?.querySelector('[name=title]').addEventListener('input',e=>compose.querySelector('[data-title-count]').textContent=e.target.value.length);compose?.addEventListener('submit',e=>{e.preventDefault();const title=compose.elements.title.value.trim(),body=compose.elements.body.value.trim();if(title.length<10||body.length<20)return notify('Заполните заголовок и описание темы',true);notify('Тема опубликована');setTimeout(()=>location.hash='topic',700)});compose?.querySelector('[data-preview]').addEventListener('click',()=>notify('Предпросмотр сформирован'));
+
+function openAuthModal(mode='login'){
+  document.querySelector('.auth-overlay')?.remove();
+  const register=mode==='register';
+  const overlay=document.createElement('div');
+  overlay.className='auth-overlay';
+  overlay.innerHTML=`<form class="auth-dialog" role="dialog" aria-modal="true" aria-label="${register?'Регистрация':'Вход'}">
+    <header class="auth-dialog__head"><div><span class="terminal-label">${register?'CREATE_ACCOUNT':'SIGN_IN'}</span><h2>${register?'Создать аккаунт':'Вход в аккаунт'}</h2></div><button type="button" data-auth-close aria-label="Закрыть">×</button></header>
+    <div class="auth-dialog__body">
+      ${register?'<label><span>Имя пользователя</span><input name="username" autocomplete="username" placeholder="Например, bytewitch" required></label>':''}
+      <label><span>Email или имя пользователя</span><input name="identity" autocomplete="username" placeholder="you@example.com" required></label>
+      <label><span>Пароль</span><input type="password" name="password" autocomplete="${register?'new-password':'current-password'}" minlength="6" placeholder="Минимум 6 символов" required></label>
+      ${register?'':'<label class="auth-dialog__remember"><input type="checkbox" checked> Запомнить меня</label>'}
+    </div>
+    <footer class="auth-dialog__foot"><a href="#" data-auth-switch="${register?'login':'register'}">${register?'Уже есть аккаунт? Войти':'Нет аккаунта? Регистрация'}</a><button class="btn btn--primary" type="submit">${register?'Продолжить':'Войти'}</button></footer>
+  </form>`;
+  document.body.append(overlay);document.body.classList.add('has-overlay');
+  const close=()=>{overlay.remove();document.body.classList.remove('has-overlay')};
+  overlay.querySelector('[data-auth-close]').onclick=close;
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  overlay.querySelector('[data-auth-switch]').onclick=e=>{e.preventDefault();close();openAuthModal(e.currentTarget.dataset.authSwitch)};
+  overlay.querySelector('form').onsubmit=e=>{e.preventDefault();const top=document.querySelector('[data-auth-state]');top.dataset.authState='member';top.querySelector('.auth-actions--guest').hidden=true;top.querySelector('.auth-actions--member').hidden=false;close();notify(register?'Аккаунт создан':'Вход выполнен')};
+  overlay.querySelector('input').focus();
+}
+document.querySelectorAll('[data-auth-open]').forEach(button=>button.addEventListener('click',()=>openAuthModal(button.dataset.authOpen)));

@@ -28,6 +28,7 @@
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-login" viewBox="0 0 24 24"><path d="M14 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-3"/><path d="M10 12h11M18 9l3 3-3 3"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
     <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
     <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
@@ -47,10 +48,16 @@
         <a class="nav-link is-active" href="#home" data-route="home">Форумы</a>
         <a class="nav-link" href="#forum" data-route="forum">Обсуждения</a>
       </nav>
-      <div class="top-actions">
+      <div class="top-actions" data-auth-state="guest">
         <button class="icon-btn search-toggle" type="button" aria-label="Открыть поиск"><svg><use href="#i-search"/></svg></button>
-        <button class="icon-btn" type="button" aria-label="Уведомления"><svg><use href="#i-bell"/></svg><span class="notification-dot"></span></button>
-        <a class="user-chip" href="#profile" data-route="profile"><span class="avatar avatar--small">AK</span><span>kernel</span></a>
+        <div class="auth-actions auth-actions--guest">
+          <button class="auth-entry" type="button" data-auth-open="login"><svg><use href="#i-login"/></svg><span>Войти</span></button>
+          <button class="auth-register" type="button" data-auth-open="register">Регистрация</button>
+        </div>
+        <div class="auth-actions auth-actions--member" hidden>
+          <button class="icon-btn" type="button" aria-label="Уведомления"><svg><use href="#i-bell"/></svg><span class="notification-dot"></span></button>
+          <a class="user-chip" href="#profile" data-route="profile"><span class="avatar avatar--small">AK</span><span>kernel</span></a>
+        </div>
         <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
       </div>
     </div>

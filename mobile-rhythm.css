@@ -44,8 +44,12 @@
   .toolbar-actions { justify-content: space-between; gap: 8px; }
   .filter-btn { min-height: 38px; }
 
-  .topic-row { min-height: 110px; padding: 20px var(--mobile-inset) 20px 60px; gap: 12px; }
-  .topic-main strong { line-height: 1.45; }
+  .topic-row { min-height: 116px; padding: 18px var(--mobile-inset); gap: 12px; }
+  .topic-state { left: auto; right: var(--mobile-inset); top: 20px; line-height: 20px; }
+  .topic-main { min-width: 0; }
+  .topic-main > div { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+  .topic-main .tag { grid-column: 1; justify-self: start; }
+  .topic-main strong { grid-column: 1 / -1; font-size: 15px; line-height: 1.4; }
   .topic-main p { margin-top: 8px; line-height: 1.5; }
   .pagination { margin-top: 24px; justify-content: center; align-items: center; }
   .pagination span { height: 38px; }
