@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивный HTML-прототип минималистичного dark-форума для программистов">
+  <title>LogicFlaw — технический форум</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css">
+  <link rel="stylesheet" href="layout-fixes.css">
+  <link rel="stylesheet" href="strict-scope.css">
+  <link rel="stylesheet" href="responsive-fixes.css">
+  <link rel="stylesheet" href="brand-requirements.css">
+  <link rel="stylesheet" href="footer-fixes.css">
+  <link rel="stylesheet" href="mobile-rhythm.css">
+</head>
+<body>
+  <svg class="svg-defs" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 7.8 7.5 9.5 4.3-1.7 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01M11 7h7M11 17h7"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M20 15a4 4 0 0 1-4 4H8l-5 3 1.6-4.8A7 7 0 0 1 3 12V9a4 4 0 0 1 4-4h9a4 4 0 0 1 4 4v6Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="shell topbar__inner">
+      <a class="brand" href="#home" data-route="home" aria-label="LogicFlaw — главная">
+        <img class="brand__logo-mark" src="logicflaw-mark.svg" alt="">
+        <span class="brand__word">LoFlaw</span>
+        <span class="brand__suffix">LOGICFLAW</span>
+      </a>
+      <nav class="primary-nav" aria-label="Основная навигация">
+        <a class="nav-link is-active" href="#home" data-route="home">Форумы</a>
+        <a class="nav-link" href="#forum" data-route="forum">Обсуждения</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-btn search-toggle" type="button" aria-label="Открыть поиск"><svg><use href="#i-search"/></svg></button>
+        <button class="icon-btn" type="button" aria-label="Уведомления"><svg><use href="#i-bell"/></svg><span class="notification-dot"></span></button>
+        <a class="user-chip" href="#profile" data-route="profile"><span class="avatar avatar--small">AK</span><span>kernel</span></a>
+        <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+      </div>
+    </div>
+    <div class="search-panel" aria-hidden="true">
+      <div class="shell search-panel__inner"><svg><use href="#i-search"/></svg><input type="search" placeholder="Поиск по темам, коду и участникам…" aria-label="Поиск"><kbd>ESC</kbd></div>
+    </div>
+  </header>
+
+  <main id="app">
+    <section class="page is-active" data-page="home">
+      <div class="shell">
+        <div class="status-rail">
+          <div class="status-rail__lead"><span class="live-dot"></span><strong>Система работает штатно</strong><span class="muted">Последнее обновление 2 мин назад</span></div>
+          <div class="status-rail__stats"><span><b>1 284</b> онлайн</span><span><b>48</b> новых тем</span><span><b>12 604</b> участников</span></div>
+        </div>
+
+        <div class="home-head page-head">
+          <div><div class="eyebrow">~/community/index</div><h1>Техническое сообщество</h1><p>Разработка, инфраструктура, безопасность и инструменты — без информационного шума.</p></div>
+          <button class="btn btn--primary" type="button">Создать тему <svg><use href="#i-arrow"/></svg></button>
+        </div>
+
+        <div class="home-layout">
+          <div class="main-column">
+            <section class="signal-board panel">
+              <div class="panel-head"><div><span class="terminal-label">LIVE_FEED</span><h2>Сейчас обсуждают</h2></div><a href="#forum" data-route="forum">Все темы <svg><use href="#i-chevron"/></svg></a></div>
+              <div class="signal-list">
+                <a class="signal-row" href="#topic" data-route="topic"><span class="signal-row__state is-hot"></span><div class="signal-row__body"><div><span class="tag tag--green">Python</span><strong>Оптимизация очереди задач: Redis Streams или RabbitMQ?</strong></div><p>Последний ответ от bytewitch · 4 минуты назад</p></div><span class="signal-row__count"><svg><use href="#i-message"/></svg>38</span></a>
+                <a class="signal-row" href="#topic" data-route="topic"><span class="signal-row__state"></span><div class="signal-row__body"><div><span class="tag">DevOps</span><strong>Zero-downtime deploy для небольшого Kubernetes-кластера</strong></div><p>Последний ответ от nixroot · 11 минут назад</p></div><span class="signal-row__count"><svg><use href="#i-message"/></svg>21</span></a>
+                <a class="signal-row" href="#topic" data-route="topic"><span class="signal-row__state"></span><div class="signal-row__body"><div><span class="tag">Web</span><strong>Разбираем memory leak в Node.js на реальном примере</strong></div><p>Последний ответ от heapdump · 19 минут назад</p></div><span class="signal-row__count"><svg><use href="#i-message"/></svg>14</span></a>
+              </div>
+            </section>
+
+            <div class="forum-groups">
+              <section class="forum-group panel">
+                <div class="group-title"><span>01</span><div><h2>Разработка</h2><p>Языки, архитектура и инструменты</p></div><button type="button" aria-label="Свернуть раздел">−</button></div>
+                <div class="forum-list">
+                  <a class="forum-row" href="#forum" data-route="forum"><span class="forum-icon"><svg><use href="#i-code"/></svg></span><div class="forum-info"><strong>Языки программирования</strong><p>Python, Go, Rust, JavaScript, C/C++ и другие</p><div class="subforums"><span>Backend</span><span>Frontend</span><span>Mobile</span></div></div><div class="forum-metrics"><span><b>2.4k</b> тем</span><span><b>18.9k</b> ответов</span></div><div class="latest"><span class="avatar avatar--tiny">BW</span><div><strong>AsyncIO под нагрузкой</strong><span>bytewitch · 4 мин</span></div></div></a>
+                  <a class="forum-row" href="#forum" data-route="forum"><span class="forum-icon"><svg><use href="#i-terminal"/></svg></span><div class="forum-info"><strong>Скрипты и автоматизация</strong><p>CLI, парсеры, боты и полезные утилиты</p><div class="subforums"><span>Open source</span><span>Ревью кода</span></div></div><div class="forum-metrics"><span><b>918</b> тем</span><span><b>7.2k</b> ответов</span></div><div class="latest"><span class="avatar avatar--tiny avatar--amber">NX</span><div><strong>Ротация логов в Bash</strong><span>nixroot · 17 мин</span></div></div></a>
+                </div>
+              </section>
+
+              <section class="forum-group panel">
+                <div class="group-title"><span>02</span><div><h2>Инфраструктура</h2><p>Системы, сети и эксплуатация</p></div><button type="button" aria-label="Свернуть раздел">−</button></div>
+                <div class="forum-list">
+                  <a class="forum-row" href="#forum" data-route="forum"><span class="forum-icon"><svg><use href="#i-server"/></svg></span><div class="forum-info"><strong>Серверы и DevOps</strong><p>Linux, контейнеры, CI/CD и мониторинг</p><div class="subforums"><span>Linux</span><span>Docker</span><span>Kubernetes</span></div></div><div class="forum-metrics"><span><b>1.7k</b> тем</span><span><b>12.1k</b> ответов</span></div><div class="latest"><span class="avatar avatar--tiny avatar--blue">HD</span><div><strong>Prometheus federation</strong><span>heapdump · 22 мин</span></div></div></a>
+                  <a class="forum-row" href="#forum" data-route="forum"><span class="forum-icon"><svg><use href="#i-shield"/></svg></span><div class="forum-info"><strong>Информационная безопасность</strong><p>Защита приложений, аудит и исследования</p><div class="subforums"><span>AppSec</span><span>Network</span><span>OSINT</span></div></div><div class="forum-metrics"><span><b>3.1k</b> тем</span><span><b>24.6k</b> ответов</span></div><div class="latest"><span class="avatar avatar--tiny avatar--red">0X</span><div><strong>CSP: строгая политика</strong><span>0x4f · 31 мин</span></div></div></a>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <aside class="sidebar">
+            <section class="side-panel panel"><div class="side-title"><h3>Навигация</h3><span class="terminal-label">INDEX</span></div><nav class="side-nav"><a class="is-active" href="#home"><svg><use href="#i-grid"/></svg><span>Все разделы</span><b>12</b></a><a href="#forum"><svg><use href="#i-code"/></svg><span>Разработка</span><b>4</b></a><a href="#forum"><svg><use href="#i-server"/></svg><span>Инфраструктура</span><b>3</b></a><a href="#forum"><svg><use href="#i-shield"/></svg><span>Безопасность</span><b>3</b></a><a href="#forum"><svg><use href="#i-message"/></svg><span>Общение</span><b>2</b></a></nav></section>
+            <section class="side-panel panel"><div class="side-title"><h3>Участники онлайн</h3><span class="online-count">1 284</span></div><div class="avatar-stack"><span class="avatar">AK</span><span class="avatar avatar--amber">NX</span><span class="avatar avatar--blue">BW</span><span class="avatar avatar--red">0X</span><span class="avatar avatar--muted">+19</span></div><p class="side-copy">312 зарегистрированных и 972 гостя просматривают форум.</p></section>
+            <section class="side-panel panel rules-card"><span class="terminal-label">README.md</span><h3>Как здесь принято</h3><p>Уважайте чужое время: давайте контекст, форматируйте код и отмечайте решённые вопросы.</p><a href="#topic">Открыть правила <svg><use href="#i-arrow"/></svg></a></section>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" data-page="forum">
+      <div class="shell compact-shell">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="#home" data-route="home">Форумы</a><svg><use href="#i-chevron"/></svg><span>Разработка</span></nav>
+        <div class="page-head forum-page-head"><div><div class="eyebrow">~/forums/development</div><h1>Языки программирования</h1><p>Обсуждение языков, архитектуры приложений и практик разработки.</p></div><button class="btn btn--primary">Создать тему <svg><use href="#i-arrow"/></svg></button></div>
+        <div class="subforum-strip"><a href="#forum"><svg><use href="#i-code"/></svg><span><b>Backend</b><small>842 темы</small></span></a><a href="#forum"><svg><use href="#i-grid"/></svg><span><b>Frontend</b><small>617 тем</small></span></a><a href="#forum"><svg><use href="#i-terminal"/></svg><span><b>Ревью кода</b><small>294 темы</small></span></a></div>
+        <div class="toolbar panel"><div class="tabs"><button class="is-active">Все темы</button><button>Без ответа</button><button>Решённые</button></div><div class="toolbar-actions"><button class="filter-btn">Фильтры <span>3</span></button><button class="icon-btn" aria-label="Обновить список">↻</button></div></div>
+        <section class="topic-list panel">
+          <div class="topic-list-head"><span>Тема</span><span>Ответы / просмотры</span><span>Последний ответ</span></div>
+          <a class="topic-row topic-row--pinned" href="#topic" data-route="topic"><span class="topic-state">PIN</span><div class="topic-main"><div><span class="tag tag--green">Важно</span><strong>Правила раздела и оформление технических вопросов</strong></div><p>system · обновлено 12 августа</p></div><div class="topic-numbers"><span><b>24</b> ответа</span><span><b>8.1k</b> просмотров</span></div><div class="topic-last"><span class="avatar avatar--tiny">AK</span><div><strong>kernel</strong><span>Сегодня, 12:40</span></div></div></a>
+          <a class="topic-row is-unread" href="#topic" data-route="topic"><span class="topic-state">NEW</span><div class="topic-main"><div><span class="tag">Python</span><strong>Оптимизация очереди задач: Redis Streams или RabbitMQ?</strong></div><p>bytewitch · Сегодня, 09:14</p></div><div class="topic-numbers"><span><b>38</b> ответов</span><span><b>1.2k</b> просмотров</span></div><div class="topic-last"><span class="avatar avatar--tiny avatar--blue">BW</span><div><strong>bytewitch</strong><span>4 минуты назад</span></div></div></a>
+          <a class="topic-row is-unread" href="#topic" data-route="topic"><span class="topic-state">NEW</span><div class="topic-main"><div><span class="tag">Go</span><strong>Контекст и graceful shutdown в production-сервисе</strong></div><p>goroutine · Сегодня, 08:32</p></div><div class="topic-numbers"><span><b>16</b> ответов</span><span><b>687</b> просмотров</span></div><div class="topic-last"><span class="avatar avatar--tiny avatar--amber">NX</span><div><strong>nixroot</strong><span>18 минут назад</span></div></div></a>
+          <a class="topic-row" href="#topic" data-route="topic"><span class="topic-state">···</span><div class="topic-main"><div><span class="tag">JavaScript</span><strong>Разбираем memory leak в Node.js на реальном примере</strong></div><p>heapdump · Вчера, 18:47</p></div><div class="topic-numbers"><span><b>14</b> ответов</span><span><b>944</b> просмотра</span></div><div class="topic-last"><span class="avatar avatar--tiny avatar--red">0X</span><div><strong>0x4f</strong><span>Сегодня, 11:52</span></div></div></a>
+          <a class="topic-row" href="#topic" data-route="topic"><span class="topic-state">✓</span><div class="topic-main"><div><span class="tag">Rust</span><strong>Как организовать workspace для нескольких CLI-утилит?</strong></div><p>borrowcheck · Вчера, 13:21</p></div><div class="topic-numbers"><span><b>9</b> ответов</span><span><b>421</b> просмотр</span></div><div class="topic-last"><span class="avatar avatar--tiny">AK</span><div><strong>kernel</strong><span>Вчера, 22:09</span></div></div></a>
+        </section>
+        <nav class="pagination" aria-label="Страницы"><button class="is-active">1</button><button>2</button><button>3</button><span>…</span><button>48</button><button aria-label="Следующая страница"><svg><use href="#i-chevron"/></svg></button></nav>
+      </div>
+    </section>
+
+    <section class="page" data-page="topic">
+      <div class="shell compact-shell">
+        <nav class="breadcrumbs"><a href="#home" data-route="home">Форумы</a><svg><use href="#i-chevron"/></svg><a href="#forum" data-route="forum">Разработка</a><svg><use href="#i-chevron"/></svg><span>Python</span></nav>
+        <header class="topic-header panel"><div><div class="topic-kicker"><span class="tag tag--green">Python</span><span>Решение ищется</span></div><h1>Оптимизация очереди задач: Redis Streams или RabbitMQ?</h1><p>Тема создана bytewitch · Сегодня, 09:14 · 1 248 просмотров</p></div><button class="icon-btn" aria-label="Следить за темой"><svg><use href="#i-eye"/></svg></button></header>
+        <div class="topic-layout">
+          <div class="posts">
+            <article class="post panel">
+              <aside class="post-author"><span class="avatar avatar--large avatar--blue">BW</span><a href="#profile" data-route="profile">bytewitch</a><span class="badge badge--premium">CORE</span><dl><div><dt>Сообщения</dt><dd>418</dd></div><div><dt>Репутация</dt><dd>1 204</dd></div><div><dt>Регистрация</dt><dd>2021</dd></div></dl></aside>
+              <div class="post-content"><div class="post-meta"><time>Сегодня, 09:14</time><a href="#topic">#1</a></div><p>Нужно обработать около 50–80 тысяч фоновых задач в сутки. Сейчас используется простой список Redis, но хочется получить нормальные подтверждения, повторную доставку и наблюдаемость.</p><p>Выбираю между Redis Streams и RabbitMQ. Команда небольшая, лишний сервис поддерживать не хочется. Текущий обработчик выглядит так:</p>
+                <div class="code-block"><div class="code-head"><span><i></i><i></i><i></i></span><b>worker.py</b><button class="copy-btn" data-copy="code-1"><svg><use href="#i-copy"/></svg><span>Копировать</span></button></div><pre id="code-1"><code><span class="kw">async def</span> <span class="fn">consume</span>(redis, stream):
+    <span class="kw">while</span> <span class="bool">True</span>:
+        messages = <span class="kw">await</span> redis.xreadgroup(
+            groupname=<span class="str">"workers"</span>, consumername=HOST,
+            streams={stream: <span class="str">">"</span>}, count=<span class="num">20</span>, block=<span class="num">5000</span>
+        )
+        <span class="kw">for</span> message_id, payload <span class="kw">in</span> unpack(messages):
+            <span class="kw">await</span> process(payload)
+            <span class="kw">await</span> redis.xack(stream, <span class="str">"workers"</span>, message_id)</code></pre></div>
+                <p>Критично не потерять задачу при падении обработчика. Какой вариант выбрали бы для такой нагрузки?</p><div class="post-actions"><button>Ответить</button><button>Цитировать</button><button class="reaction">⌁ Полезно <span>12</span></button></div></div>
+            </article>
+            <article class="post panel">
+              <aside class="post-author"><span class="avatar avatar--large avatar--amber">NX</span><a href="#profile" data-route="profile">nixroot</a><span class="badge badge--mod">MODERATOR</span><dl><div><dt>Сообщения</dt><dd>2 184</dd></div><div><dt>Репутация</dt><dd>6 870</dd></div><div><dt>Регистрация</dt><dd>2019</dd></div></dl></aside>
+              <div class="post-content"><div class="post-meta"><time>Сегодня, 09:31</time><a href="#topic">#2</a></div><blockquote><strong>bytewitch написал:</strong><p>Команда небольшая, лишний сервис поддерживать не хочется.</p></blockquote><p>При такой нагрузке Streams вполне достаточно. У вас уже есть Redis, а consumer groups закрывают подтверждения и повторное чтение сообщений. Обязательно добавьте reclaim зависших задач через <code>XAUTOCLAIM</code>.</p>
+                <div class="hide-block hide-block--mmo"><div class="hide-icon"><svg><use href="#i-shield"/></svg></div><div><span class="terminal-label">[MMO] HIDDEN_CONTENT</span><strong>Практический пример конфигурации</strong><p>Выполните все условия, чтобы открыть содержимое.</p><div class="hide-requirements"><span class="is-met"><i>✓</i>Вы ответили в теме</span><span class="is-missing"><i>!</i>Поставьте реакцию автору</span></div></div><button>Проверить доступ</button></div>
+                <p>RabbitMQ выбирал бы, если появятся сложная маршрутизация, несколько типов exchange или требования, которые уже неудобно моделировать поверх Streams.</p><div class="post-actions"><button>Ответить</button><button>Цитировать</button><button class="reaction is-active">⌁ Полезно <span>27</span></button></div></div>
+            </article>
+            <article class="post panel">
+              <aside class="post-author"><span class="avatar avatar--large avatar--red">SP</span><a href="#profile" data-route="profile">syntaxpoint</a><span class="badge badge--sponsor">SPONSOR</span><span class="badge badge--improved">IMPROVED</span><dl><div><dt>Сообщения</dt><dd>864</dd></div><div><dt>Реакции</dt><dd>2 431</dd></div><div><dt>Регистрация</dt><dd>2020</dd></div></dl></aside>
+              <div class="post-content"><div class="post-meta"><time>Сегодня, 10:04</time><a href="#topic">#3</a></div><p>Если обработчик находится в PHP-приложении, подтверждайте задачу только после успешной транзакции. Для повторных попыток сохраняйте число попыток отдельно.</p>
+                <div class="code-block"><div class="code-head"><span><i></i><i></i><i></i></span><b class="php-label">worker.php</b><button class="copy-btn" data-copy="code-php"><svg><use href="#i-copy"/></svg><span>Копировать</span></button></div><pre id="code-php"><code><span class="kw">final class</span> <span class="fn">QueueWorker</span>
+{
+    <span class="kw">public function</span> <span class="fn">handle</span>(Message $message): <span class="bool">void</span>
+    {
+        $this-&gt;connection-&gt;transactional(
+            <span class="kw">fn</span> () =&gt; $this-&gt;processor-&gt;run($message)
+        );
+        $message-&gt;ack();
+    }
+}</code></pre></div>
+                <div class="post-actions"><button>Ответить</button><button>Цитировать</button><button class="reaction">⌁ Полезно <span>16</span></button></div></div>
+            </article>
+
+            <div class="reply-box panel"><span class="avatar">AK</span><div><textarea rows="4" placeholder="Напишите ответ…"></textarea><div><span>Markdown и BB-коды поддерживаются</span><button class="btn btn--primary">Ответить</button></div></div></div>
+          </div>
+          <aside class="topic-aside"><section class="side-panel panel"><div class="side-title"><h3>О теме</h3><span class="terminal-label">META</span></div><dl class="topic-summary"><div><dt>Ответов</dt><dd>38</dd></div><div><dt>Участников</dt><dd>14</dd></div><div><dt>Просмотров</dt><dd>1 248</dd></div></dl></section><section class="side-panel panel"><div class="side-title"><h3>Похожие темы</h3></div><a class="related" href="#topic"><strong>Celery и Redis: контроль повторов</strong><span>19 ответов</span></a><a class="related" href="#topic"><strong>NATS JetStream в небольшом проекте</strong><span>11 ответов</span></a></section></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" data-page="profile">
+      <div class="shell compact-shell">
+        <nav class="breadcrumbs"><a href="#home" data-route="home">Форумы</a><svg><use href="#i-chevron"/></svg><span>Профиль</span></nav>
+        <section class="profile-hero panel"><div class="profile-identity"><span class="avatar avatar--xl">AK</span><div><div class="profile-name"><h1>kernel</h1><span class="badge badge--admin">ADMIN</span></div><p>Системный инженер · Москва</p><div class="profile-presence"><span class="live-dot"></span>Сейчас на форуме</div></div></div><div class="profile-actions"><button class="btn btn--ghost">Подписаться</button><button class="btn btn--primary">Сообщение</button></div><div class="profile-stats"><div><b>3 842</b><span>сообщения</span></div><div><b>8 204</b><span>репутация</span></div><div><b>126</b><span>решений</span></div><div><b>5 лет</b><span>на форуме</span></div></div></section>
+        <div class="profile-layout">
+          <section class="profile-main panel"><div class="profile-tabs"><button class="is-active">Обзор</button><button>Активность</button><button>Темы</button><button>Информация</button></div><div class="profile-content"><div class="about"><span class="terminal-label">ABOUT.txt</span><h2>О пользователе</h2><p>Проектирую инфраструктуру, автоматизирую рутину и иногда разбираю чужие падения production. Пишу о Linux, Go и наблюдаемости систем.</p></div><h3>Последняя активность</h3><div class="activity-list"><a href="#topic" data-route="topic"><span class="activity-mark">R</span><div><strong>Ответ в теме «Оптимизация очереди задач»</strong><p>Рекомендовал добавить XAUTOCLAIM для возврата зависших сообщений.</p><time>12 минут назад</time></div></a><a href="#topic" data-route="topic"><span class="activity-mark">T</span><div><strong>Создал тему «Метрики PostgreSQL без лишнего шума»</strong><p>Базовый набор алертов для небольшого production-кластера.</p><time>Вчера, 19:42</time></div></a></div></div></section>
+          <aside class="profile-side"><section class="side-panel panel"><div class="side-title"><h3>Доступ</h3><span class="terminal-label">ACL</span></div><div class="role-list"><span class="badge badge--admin">ADMIN</span><span class="badge badge--mod">MODERATOR</span><span class="badge badge--premium">CORE</span></div></section><section class="side-panel panel"><div class="side-title"><h3>Информация</h3></div><dl class="info-list"><div><dt>Регистрация</dt><dd>14 марта 2021</dd></div><div><dt>Последний вход</dt><dd>сейчас</dd></div><div><dt>GitHub</dt><dd>@kernelops</dd></div></dl></section></aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="shell"><a class="brand brand--footer" href="#home" data-route="home"><img class="brand__logo-mark" src="logicflaw-mark.svg" alt=""><span class="brand__word">LoFlaw</span></a><div class="footer__meta"><p>© 2026 LogicFlaw</p><span>Сообщество разработчиков и специалистов по безопасности</span></div><nav><a href="#home" data-route="home">Форумы</a><a href="#topic" data-route="topic">Правила</a></nav></div></footer>
+  <div class="toast" role="status">Код скопирован</div>
+  <script src="app-v2.js"></script>
+</body>
+</html>

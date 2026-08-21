@@ -1,0 +1,36 @@
+/* Production layout guards: prevent native controls from expanding CSS grids. */
+.compose-shell,
+.compose-form,
+.compose-form > label,
+.compose-form > label > * {
+  min-width: 0;
+}
+
+.compose-form input:not([type="checkbox"]),
+.compose-form select,
+.compose-editor,
+.compose-editor textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.compose-form select {
+  display: block;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 820px) {
+  .compose-form > label {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .compose-form > label > span {
+    margin-bottom: 2px;
+  }
+
+  .compose-form > label > small {
+    width: auto;
+    justify-self: end;
+  }
+}

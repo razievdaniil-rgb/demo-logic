@@ -1,0 +1,114 @@
+/* Prevent primary actions from wrapping in compressed layouts. */
+.btn,
+.page-head .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Keep the composer inside the viewport without a scrollbar at normal heights. */
+.composer-overlay {
+  padding: 12px;
+}
+
+.composer-dialog {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  max-height: calc(100dvh - 24px);
+  overflow: hidden;
+}
+
+.composer-dialog__head {
+  min-height: 58px;
+  padding: 10px 16px;
+}
+
+.composer-dialog__body {
+  min-height: 0;
+  overflow: visible;
+  gap: 11px;
+  padding: 14px 16px;
+}
+
+.composer-dialog__body textarea {
+  height: clamp(140px, 28dvh, 220px);
+  min-height: 120px;
+  max-height: 220px;
+  resize: none;
+}
+
+.composer-dialog__foot {
+  padding: 11px 16px;
+}
+
+@media (max-width: 820px) {
+  .page-head {
+    flex-wrap: wrap;
+  }
+
+  .page-head > div {
+    min-width: min(100%, 420px);
+  }
+}
+
+@media (max-width: 680px) {
+  .page-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-head .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .composer-overlay {
+    align-items: center;
+    padding: 8px;
+  }
+
+  .composer-dialog {
+    width: 100%;
+    max-height: calc(100dvh - 16px);
+    border-radius: 9px;
+  }
+
+  .composer-dialog__head {
+    min-height: 54px;
+    padding: 8px 13px;
+  }
+
+  .composer-dialog__head h2 {
+    font-size: 17px;
+  }
+
+  .composer-dialog__body {
+    gap: 9px;
+    padding: 11px 13px;
+  }
+
+  .composer-dialog__body input,
+  .composer-dialog__body select {
+    height: 38px;
+  }
+
+  .composer-dialog__body textarea {
+    height: clamp(120px, 24dvh, 180px);
+    min-height: 110px;
+  }
+
+  .composer-dialog__foot {
+    padding: 9px 13px;
+  }
+}
+
+/* Very short landscape windows still need access to every field. */
+@media (max-height: 560px) {
+  .composer-dialog__body {
+    overflow-y: auto;
+  }
+
+  .composer-dialog__body textarea {
+    height: 120px;
+  }
+}

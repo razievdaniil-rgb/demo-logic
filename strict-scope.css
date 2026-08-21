@@ -1,0 +1,56 @@
+.composer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(3, 6, 4, .78);
+  backdrop-filter: blur(8px);
+}
+
+.composer-dialog {
+  width: min(720px, 100%);
+  max-height: min(780px, calc(100vh - 40px));
+  overflow: auto;
+  background: var(--xf-surface-raised);
+  border: 1px solid var(--xf-border);
+  border-radius: 10px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, .55);
+}
+
+.composer-dialog__head {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--xf-border-soft);
+}
+
+.composer-dialog__head h2 { margin: 2px 0 0; font-size: 19px; }
+.composer-dialog__head button { border: 0; background: transparent; color: var(--xf-text-muted); cursor: pointer; font-size: 22px; }
+.composer-dialog__body { padding: 18px; display: grid; gap: 15px; }
+.composer-dialog__body label { display: grid; gap: 6px; }
+.composer-dialog__body label > span { font-size: 11px; color: #bbc5bf; }
+.composer-dialog__body input,
+.composer-dialog__body select,
+.composer-dialog__body textarea { width: 100%; min-width: 0; border: 1px solid var(--xf-border); border-radius: 6px; background: #0d110f; color: var(--xf-text); padding: 10px 11px; outline: 0; }
+.composer-dialog__body input,
+.composer-dialog__body select { height: 42px; }
+.composer-dialog__body textarea { resize: vertical; line-height: 1.55; }
+.composer-dialog__body input:focus,
+.composer-dialog__body select:focus,
+.composer-dialog__body textarea:focus { border-color: #3d6a4e; box-shadow: 0 0 0 3px rgba(57, 184, 111, .07); }
+.composer-dialog__tools { min-height: 38px; display: flex; align-items: center; gap: 3px; padding: 3px 6px; border: 1px solid var(--xf-border); border-bottom: 0; border-radius: 6px 6px 0 0; }
+.composer-dialog__tools button { width: 31px; height: 31px; border: 0; background: transparent; color: var(--xf-text-muted); cursor: pointer; }
+.composer-dialog__tools + textarea { border-radius: 0 0 6px 6px; }
+.composer-dialog__foot { display: flex; justify-content: flex-end; gap: 8px; padding: 14px 18px; border-top: 1px solid var(--xf-border-soft); }
+body.has-overlay { overflow: hidden; }
+
+@media (max-width: 560px) {
+  .composer-overlay { padding: 8px; align-items: end; }
+  .composer-dialog { max-height: calc(100vh - 16px); border-radius: 10px 10px 0 0; }
+  .composer-dialog__body { padding: 14px; }
+  .composer-dialog__foot .btn { flex: 1; }
+}
